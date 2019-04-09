@@ -1,4 +1,4 @@
-//------>include libraly<------//
+//------>include library<------//
 #include <iostream>
 #include <conio.h>
 #include <string.h>
@@ -8,18 +8,18 @@
 int menu(); //main menu
 void add(); //add contact
 void find(); //search from list
-void del(); //delect from list
+void del(); //delete from list
 void disall(); //display all contact
 
-//------>create node structor<------//
+//------>create node structure<------//
 struct Node {
-    char fname[20], lname[20], telnum[10];
-    struct Node *prev;
-    struct Node *next;
+    char fname[20], lname[20], telnum[10]; //initiail datatype to keep first-name, last-name, phone-number
+    struct Node *prev; //previous pointer
+    struct Node *next; //next pointer
 };
-struct Node* head = NULL;
-typedef  Node node;
-node *start, *temp;
+struct Node* head = NULL; //init head-pointer equal null
+typedef  Node node; //define Node as node type
+node *start, *temp; //init start-pointer and temp-pointer
 
 //------>insert data in to node<------//
 void add(){
