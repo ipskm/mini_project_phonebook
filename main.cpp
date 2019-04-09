@@ -13,7 +13,7 @@ void disall(); //display all contact
 
 //------>create node structor<------//
 struct Node {
-    char fname[20], lname[20], telnum[10], address[100];
+    char fname[20], lname[20], telnum[10];
     struct Node *prev;
     struct Node *next;
 };
@@ -68,11 +68,17 @@ void find(){
         ptr = ptr->next;
         if(ptr == NULL) break;
     }
-    if(ptr !== NULL){
+    if(ptr != NULL){
         printf("First Name : %s\n",ptr -> fname);
         printf("Last Name : %s\n",ptr -> lname);
+        printf("Telephone Number : %s\n",ptr -> telnum);
+    }else{
+        printf("No matching Recoard Found !\n");
     }
+    getch();
 }
+
+
 //------>main menu function<------//
 int menu(){
     int select_menu;

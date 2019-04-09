@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/ipskm/CLionProjects/mini_Algo_project/main.cpp" "C:/Users/ipskm/CLionProjects/mini_Algo_project/cmake-build-debug/CMakeFiles/mini_Algo_project.dir/main.cpp.obj"
+  "C:/Users/ipskm/CLionProjects/mini_project_phonebook/main.cpp" "C:/Users/ipskm/CLionProjects/mini_project_phonebook/cmake-build-debug/CMakeFiles/mini_Algo_project.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
