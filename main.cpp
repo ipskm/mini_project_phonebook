@@ -5,37 +5,37 @@
 #include <stdlib.h>
 
 //------>define function<------//
-int menu(); //main menu (ฟังก์ชันเมนูหลัก)
-void add(); //add contact (ฟังก์ชันเพิ่มรายชื่อ)
-void find(); //search from list (ฟังก์ชันการค้นหา)
-void del(); //delete from list (ฟังก์ชันลบรายชื่อ)
-void disall(); //display all contact (ฟังก์ชันแสดงรายชื่อทั้งหมด)
+int menu(); //main menu -> ฟังก์ชันเมนูหลัก
+void add(); //add contact -> ฟังก์ชันเพิ่มรายชื่อ
+void find(); //search from list -> ฟังก์ชันการค้นหา
+void del(); //delete from list -> ฟังก์ชันลบรายชื่อ
+void disall(); //display all contact -> ฟังก์ชันแสดงรายชื่อทั้งหมด
 
 //------>create node structure<------//
 struct Node {
-    char fname[20], lname[20], telnum[10]; //initiail datatype to keep first-name, last-name, phone-number
-    struct Node *prev; //previous pointer
-    struct Node *next; //next pointer
+    char fname[20], lname[20], telnum[10]; //initiail datatype to keep first-name, last-name, phone-number -> สร้างรูปแบบการเก็บข้อมูลในโหนด
+    struct Node *prev; //previous pointer -> สร้างพอยเตอร์เพื่อชี้ตัวข้างหน้า
+    struct Node *next; //next pointer -> สร้างพอยเตอร์เพื่อชี้ตัวถัดไป
 };
-struct Node* head = NULL; //init head-pointer equal null
-typedef  Node node; //define Node as node type
-node *start, *temp; //init start-pointer and temp-pointer
+struct Node* head = NULL; //init head-pointer equal null -> กำหนดให้พอยเตอร์เฮดมีค่าเท่ากับ null
+typedef  Node node; //define Node as node type -> ตั้งค่าการเขียนจาก Node เป็น node
+node *start, *temp; //init start-pointer and temp-pointer -> สร้างพอยเตอร์ สตาร์ทและเทม
 
 //------>insert data in to node<------//
 void add(){
-    node *ptr, *prev;  //init pointer
-    temp = (node *)malloc(sizeof(node)); //set temp insert data to node
+    node *ptr, *prev;  //init pointer -> สร้างพอยต์เตอร์
+    temp = (node *)malloc(sizeof(node)); //set temp insert data to node -> ให้ temp เป็นตัวแปรเก็บข้อมูล
     printf("First name : ");
-    scanf("%s", temp -> fname);  //insert First-Name to fmane[20] by temp pointer
+    scanf("%s", temp -> fname);  //insert First-Name to fmane[20] by temp pointer -> รับค่าและเก็บข้อมูลเข้าโหนด
     printf("Last Name : ");
-    scanf("%s", temp -> lname);  //insert Last-Name to lname[20] by temp pointer
+    scanf("%s", temp -> lname);  //insert Last-Name to lname[20] by temp pointer -> รับค่าและเก็บข้อมูลเข้าโหนด
     printf("Telephone Number : ");
-    scanf("%s", temp -> telnum); //insert Tel-Number to telnum[10] by temp pointer
-    temp -> next = NULL; //set next pointer equal NULL
+    scanf("%s", temp -> telnum); //insert Tel-Number to telnum[10] by temp pointer -> รับค่าและเก็บข้อมูลเข้าโหนด
+    temp -> next = NULL; //set next pointer equal NULL -> ให้พอยต์เตอร์ next มีค่าเป็น null
 
-    if(start == NULL) start = temp;  //check start pointer if equal null will define to temp
+    if(start == NULL) start = temp;  //check start pointer if equal null will define to temp -> ตรวจสอบว่าพอยเตอร์ start มีค่าเท่ากับ null ไหม ถ้าใช่ให้ start มีค่าเท่ากับ temp แทน
     else {
-        prev = ptr = start;
+        prev = ptr = start; //ให้พอย์เตอร์ prev ptr และ start ชี้ไปที่โหนดเดียวกัน
         while (strcmp(temp -> fname, ptr -> fname) > 0) {
             prev = ptr;
             ptr = ptr -> next;
@@ -144,13 +144,14 @@ void del(){
                 free (start);
                 prev -> next = temp;
             }
-            printf("Record Deleted.");
+            printf("Record Deleted.\n");
         }else{
-            printf("Record not deleted.");
+            printf("Record not deleted.\n");
         }
     } else {
-        printf("Not Matching Record Found.");
+        printf("Not Matching Record Found.\n");
     }
+    return;
     getch();
 }
 
@@ -162,11 +163,12 @@ void disall(){
         return;
     }
     for(ptr = start; ptr != NULL; ptr = ptr -> next){
-        printf("First name: %s", ptr -> fname);
-        printf("Last name:%s", ptr -> lname);
-        printf("Telephone No.: %s", ptr -> telnum);
+        printf("First name: %s \n", ptr -> fname);
+        printf("Last name:%s \n", ptr -> lname);
+        printf("Telephone No.: %s \n", ptr -> telnum);
         printf("------------------------------\n");
     }
+    return;
     getch();
 }
 
