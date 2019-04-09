@@ -35,7 +35,7 @@ void add(){
 
     if(start == NULL) start = temp;  //check start pointer if equal null will define to temp -> ตรวจสอบว่าพอยเตอร์ start มีค่าเท่ากับ null ไหม ถ้าใช่ให้ start มีค่าเท่ากับ temp แทน
     else {
-        prev = ptr = start; //ให้พอย์เตอร์ prev ptr และ start ชี้ไปที่โหนดเดียวกัน
+        prev = ptr = start; //declare prev ptr start pointer to the same node -> ให้พอย์เตอร์ prev ptr และ start ชี้ไปที่โหนดเดียวกัน
         while (strcmp(temp -> fname, ptr -> fname) > 0) {
             prev = ptr;
             ptr = ptr -> next;
