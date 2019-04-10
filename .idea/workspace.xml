@@ -12,7 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcc489db-6f78-4789-8255-7d3c966c8749" name="Default Changelist" comment="finish find function">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -34,7 +33,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8">
+            <state relative-caret-position="425">
               <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
               <folding>
                 <element signature="e#34#53#0" expanded="true" />
@@ -66,6 +65,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -77,7 +77,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -126,6 +125,7 @@
       <workItem from="1554801454896" duration="3398000" />
       <workItem from="1554811515603" duration="6843000" />
       <workItem from="1554821618281" duration="173000" />
+      <workItem from="1554866621476" duration="31000" />
     </task>
     <task id="LOCAL-00001" summary="finish find function">
       <created>1554812022420</created>
@@ -138,14 +138,14 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10414000" />
+    <option name="totallyTimeSpent" value="10445000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.3420622" visible="true" weight="0.25567323" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.34042552" visible="true" weight="0.25945538" />
       <window_info id="Favorites" order="1" sideWeight="0.5008183" side_tool="true" weight="0.25189108" />
-      <window_info id="Structure" order="2" sideWeight="0.6579378" side_tool="true" visible="true" weight="0.25567323" />
+      <window_info id="Structure" order="2" sideWeight="0.65957445" side_tool="true" visible="true" weight="0.25945538" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.18330605" />
@@ -181,7 +181,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8">
+        <state relative-caret-position="425">
           <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
           <folding>
             <element signature="e#34#53#0" expanded="true" />

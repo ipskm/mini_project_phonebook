@@ -35,7 +35,7 @@ void add(){
 
     if(start == NULL) start = temp;  //check start pointer if equal null will define to temp -> ตรวจสอบว่าพอยเตอร์ start มีค่าเท่ากับ null ไหม ถ้าใช่ให้ start มีค่าเท่ากับ temp แทน
     else {
-        prev = ptr = start; //declare prev ptr start pointer to the same node -> ให้พอย์เตอร์ prev ptr และ start ชี้ไปที่โหนดเดียวกัน
+        prev = ptr = start; //define prev ptr start pointer to the same node -> ให้พอย์เตอร์ prev ptr และ start ชี้ไปที่โหนดเดียวกัน
         while (strcmp(temp -> fname, ptr -> fname) > 0) {
             prev = ptr;
             ptr = ptr -> next;
@@ -118,7 +118,7 @@ void del(){
         return;
     }
     printf("First Name to Delete : ");
-    scanf("%s", ptr);
+    scanf("%s", str);
     prev = ptr = start;
     while (strcmp(ptr -> fname, str) != 0){
         prev = ptr;
@@ -163,6 +163,7 @@ void disall(){
         return;
     }
     for(ptr = start; ptr != NULL; ptr = ptr -> next){
+		printf("------------------------------\n");
         printf("First name: %s \n", ptr -> fname);
         printf("Last name:%s \n", ptr -> lname);
         printf("Telephone No.: %s \n", ptr -> telnum);
@@ -187,7 +188,6 @@ int menu(){
     return select_menu;
 }
 
-
 int main() {
     int ch;
     start = (node *)malloc(sizeof(node));
@@ -202,10 +202,10 @@ int main() {
                 find();
                 break;
             case 3:
-                edit();
+                del();
                 break;
             case 4:
-                del();
+                edit();
                 break;
             case 5:
                 disall();
