@@ -19,11 +19,11 @@ struct Node {
 };
 struct Node* head = NULL; //init head-pointer equal null -> กำหนดให้พอยเตอร์เฮดมีค่าเท่ากับ null
 typedef  Node node; //define Node as node type -> ตั้งค่าการเขียนจาก Node เป็น node
-node *start, *temp; //init start-pointer and temp-pointer -> สร้างพอยเตอร์ สตาร์ทและเทม
+node *start, *temp; //init start-pointer and temp-pointer -> สร้างพอยเตอร์ start และ temp
 
 //------>insert data in to node<------//
 void add(){
-    node *ptr, *prev;  //init pointer -> สร้างพอยต์เตอร์
+    node *ptr, *prev;  //define pointer ptr and prev -> สร้างพอยต์เตอร์ ptr และ prev
     temp = (node *)malloc(sizeof(node)); //set temp insert data to node -> ให้ temp เป็นตัวแปรเก็บข้อมูล
     printf("First name : ");
     scanf("%s", temp -> fname);  //insert First-Name to fmane[20] by temp pointer -> รับค่าและเก็บข้อมูลเข้าโหนด
@@ -36,13 +36,13 @@ void add(){
     if(start == NULL) start = temp;  //check start pointer if equal null will define to temp -> ตรวจสอบว่าพอยเตอร์ start มีค่าเท่ากับ null ไหม ถ้าใช่ให้ start มีค่าเท่ากับ temp แทน
     else {
         prev = ptr = start; //define prev ptr start pointer to the same node -> ให้พอย์เตอร์ prev ptr และ start ชี้ไปที่โหนดเดียวกัน
-        while (strcmp(temp -> fname, ptr -> fname) > 0) { //compare the string in fname(temp) and fname(ptr) is not equal to 0
-            prev = ptr; //set an previous pointer equal to ptr
-            ptr = ptr -> next; //set pointer equal to next pointer(null)
-            if (ptr == NULL) break; //if ptr pointer equal null exit the loop
+        while (strcmp(temp -> fname, ptr -> fname) > 0) { //compare the string in fname(temp) and fname(ptr) is not equal to 0 -> เปรียบเทียบ string ใน nodeว่าไม่เท่ากับ 0
+            prev = ptr; //set an previous pointer equal to ptr -> ให้ pointer prev ชี้ไปที่เดียวกับ ptr
+            ptr = ptr -> next; //set pointer equal to next pointer(null) -> ให้ ptr ชี้ไปที่โหนดถัดไป
+            if (ptr == NULL) break; //if ptr pointer equal null exit the loop -> ถ้า ptr มีค่าเป็น null (ชี้ถัดไปเรื่อย ๆ จนไม่มีโหนดให้ชี้) ให้ออกจากลูป
         }
-        if (ptr == prev) { //if ptr pointer equal to prev
-            temp -> next = start;
+        if (ptr == prev) { //if ptr pointer equal to prev -> ถ้า ptr ชี้ไปที่เดียวกับ prev ให้ temp ชี้ไปที่เดียวกับ start แล้วให้ start มีค่าเป็น temp
+            temp -> next = start; 
             start = temp;
         } else if (ptr == NULL) { //if ptr equal to null will set prev equal temp -> ถ้า ptr เป็น null ให้ prev ชี้ไปที่โหนดเดียวกันกับ temp
             prev -> next = temp;
@@ -56,59 +56,59 @@ void add(){
 
 //------>find contact function<------//
 void find(){
-    node *ptr; //define the  pointer ptr
-    char str[20]; //define variable str is char length 20 character
-    if(start == NULL){ //if start equal null print "Directory is Empty"
+    node *ptr; //define the  pointer ptr -> สร้างพอยเตอร์ ptr
+    char str[20]; //define variable str is char length 20 character -> สร้างตัวแปรไว้เก็บข้อมูล string 20 ตัวอักษร
+    if(start == NULL){ //if start equal null print "Directory is Empty" -> ถ้า start มีค่าเท่ากับ null ให้แสดงผลว่าไม่มีโหนด
         printf("Directory is Empty...");
         getch();
-        return; //return to main function
+        return; //return to main function -> กลับไปที่ฟังก์ชั่น main
     }
-    printf("First Name to Find : "); //print sentence to get name to search
-    scanf("%s",&str); //get string from user
-    ptr = start; //set ptr equal to start
-    while (strcmp(ptr -> fname,str)!= 0){ //compare string from user is equal data in some node
-        ptr = ptr -> next;
-        if(ptr == NULL) break; //if ptr is null exit loop
+    printf("First Name to Find : "); //print sentence to get name to search -> แสดงผลให้ป้อนชื่อสำหรับค้นหา
+    scanf("%s",&str); //get string from user -> รับค่าจากผู้ใช้งาน
+    ptr = start; //set ptr equal to start -> ให้ ptr ชี้ไปที่เดียวกับ start
+    while (strcmp(ptr -> fname,str)!= 0){ //compare string from user is equal data in some node -> เปรียบเทียบ string กับในโหนด
+        ptr = ptr -> next; //set ptr equal next -> ให้ ptr ชี้ไปที่โหนดเดียวกัน
+        if(ptr == NULL) break; //if ptr is null exit loop -> ถ้า ptr มีค่าเท่ากับ null ให้ออกจากลูป
     }
-    if(ptr != NULL){ //if ptr isn't null will print data from search name
+    if(ptr != NULL){ //if ptr isn't null will print data from search name -> ถ้า ptr ไม่เท่ากับ null หรือค้นหาเจอให้แสดงข้อมูลในโหนดนั้น ๆ ออกมา
         printf("First Name : %s\n",ptr -> fname);
         printf("Last Name : %s\n",ptr -> lname);
         printf("Telephone Number : %s\n",ptr -> telnum);
-    }else{ //or no match found will print some sentence
+    }else{ //or no match found will print some sentence -> ถ้า ptr เท่ากับ null ให้แสดงผลว่าไม่เจอ
         printf("No matching Record Found !\n");
     }
     getch();
-	return;
+	return; //return to main function -> กลับไปที่ main ฟังก์ชัน
 }
 
 //------>edit contact function<------//
 void edit(){
-    node *ptr; //define ptr pointer
-    char str[20]; //define variable str to keep string has length 20
-    if (start==NULL){ //if start pointer is null print some sentence
+    node *ptr; //define ptr pointer -> สร้าง ptr พอยเตอร์
+    char str[20]; //define variable str to keep string has length 20 -> สร้างตัวแปรไว้เก็บจ้อมูล string ขนาก 20 ตัวอักษร
+    if (start==NULL){ //if start pointer is null print some sentence -> ถ้า start มีค่าเป็น null ให้แสดงผลว่าไม่มีข้อมูล
         printf("Directory id Empty....\n");
         getch();
-        return ;
+        return ; //return to main function -> กลับไปที่ main ฟังก์ชัน
     }
-    printf("First Name to Edit is : "); //print some sentence
-    scanf("%s",str); //get string data from user
-    ptr=start; //set ptr equal to start
-    while (strcmp(ptr -> fname,str) != 0){ //compare string from user is equal data in some node then will set ptr equal next
+    printf("First Name to Edit is : "); //print some sentence -> แสดงผลให้กรอกข้อมูลเพื่อค้นหา
+    scanf("%s",str); //get string data from user -> รับข้อมูลจากผู้ใช้งานแล้วเก็บในตัวแปร str
+    ptr=start; //set ptr equal to start -> ให้ ptr ชี้ไปที่เดียวกับ start
+    while (strcmp(ptr -> fname,str) != 0){ //compare string from user is equal data in some node then will set ptr equal next -> เปรียบเทียบ string ที่รับค่ามากับ node ทุก ๆ node จนกว่าจะหมด
         ptr = ptr -> next;
-        if(ptr == NULL) break; //if ptr is null will exit loop
+        if(ptr == NULL) break; //if ptr is null will exit loop -> เมื่อ ptr เท่ากับ null ให้ออกจาก loop
     }
-    if(ptr != NULL){ //if ptr isn't null will get data from user to change data into this node
+    if(ptr != NULL){ //if ptr isn't null will get data from user to change data into this node -> ถ้า ptr ไม่เท่ากับ null ให้แสดงผลข้อมุลในโหยดออกมาแล้วรับค่าจากผู้ใช้เข้าไปแทนที่ในโหนด
         printf("Edit First Name : %s to : ", ptr -> fname);
         scanf("%s", ptr -> fname); //get first-name
         printf("Edit Last Name : %s to : ", ptr -> lname);
         scanf("%s", ptr -> lname); //get last-name
         printf("Edit Phone Number : %s to : ", ptr -> telnum);
         scanf("%s", ptr -> telnum); //get telnum
-    } else{ //or return not match
+    } else{ //or return not match -> ถ้าหาไม่เจอให้แสดงผลว่าไม่มีอะไรที่เหมือนกับคำที่ค้นหา
         printf("No Matching Records Found ! \n");
     }
-	return;
-    getch();
+	return; //return to main function -> กลับไปที่ main ฟังก์ชัน
+    getch(); 
 }
 
 //------>delete contact function<------//
