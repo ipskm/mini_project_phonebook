@@ -36,12 +36,12 @@ void add(){
     if(start == NULL) start = temp;  //check start pointer if equal null will define to temp -> ตรวจสอบว่าพอยเตอร์ start มีค่าเท่ากับ null ไหม ถ้าใช่ให้ start มีค่าเท่ากับ temp แทน
     else {
         prev = ptr = start; //define prev ptr start pointer to the same node -> ให้พอย์เตอร์ prev ptr และ start ชี้ไปที่โหนดเดียวกัน
-        while (strcmp(temp -> fname, ptr -> fname) > 0) {
-            prev = ptr;
-            ptr = ptr -> next;
-            if (ptr == NULL) break;
+        while (strcmp(temp -> fname, ptr -> fname) > 0) { //compare the string in fname(temp) and fname(ptr) is not equal to 0
+            prev = ptr; //set an previous pointer equal to ptr
+            ptr = ptr -> next; //set pointer equal to next pointer(null)
+            if (ptr == NULL) break; //if ptr pointer equal null exit the loop
         }
-        if (ptr == prev) {
+        if (ptr == prev) { //
             temp -> next = start;
             start = temp;
         } else if (ptr == NULL) {
