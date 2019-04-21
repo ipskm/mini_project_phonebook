@@ -36,21 +36,12 @@ void add(){
     if(start == NULL) start = temp;  //check start pointer if equal null will define to temp -> ตรวจสอบว่าพอยเตอร์ start มีค่าเท่ากับ null ไหม ถ้าใช่ให้ start มีค่าเท่ากับ temp แทน
     else {
         prev = ptr = start; //define prev ptr start pointer to the same node -> ให้พอย์เตอร์ prev ptr และ start ชี้ไปที่โหนดเดียวกัน
-<<<<<<< HEAD
         while (strcmp(temp -> fname, ptr -> fname) > 0) { //compare the string in fname(temp) and fname(ptr) is not equal to 0
             prev = ptr; //set an previous pointer equal to ptr
             ptr = ptr -> next; //set pointer equal to next pointer(null)
             if (ptr == NULL) break; //if ptr pointer equal null exit the loop
         }
-        if (ptr == prev) { //
-=======
-        while (strcmp(temp -> fname, ptr -> fname) > 0) { //loop read data from node to compare isn't equal to 0 -> วนลูปเพื่ออ่านข้อมูลจากโหนด เพื่อเปรียบเทียบว่ามีข้อมูลอยู่ในโหนดว่าไม่ได้ว่างหรือมีค่าเท่ากับ 0
-            prev = ptr; //define pointer prev equal to ptr -> ให้พอยต์เตอร์ prev ชี้ไปที่โหนดเดียวกันกับ ptr
-            ptr = ptr -> next; //define ptr equal to next -> ให้พอยต์เตอร์ ptr มีค่าเท่ากับ next
-            if (ptr == NULL) break; //if ptr is null will exit loop -> เมื่อ ptr มีค่าเท่ากับ null ให้ออกจากลูป
-        }
-        if (ptr == prev) { //if ptr equal to prev will set start pointer equal to temp -> ถ้า ptr ชี้ไปที่โหนดเดียวกันกับ prev จะให้ temp มีค่าเป็น start
->>>>>>> b06549e2924f356478759e966ba91880231d7b2e
+        if (ptr == prev) { //if ptr pointer equal to prev
             temp -> next = start;
             start = temp;
         } else if (ptr == NULL) { //if ptr equal to null will set prev equal temp -> ถ้า ptr เป็น null ให้ prev ชี้ไปที่โหนดเดียวกันกับ temp
@@ -95,7 +86,7 @@ void edit(){
     node *ptr; //define ptr pointer
     char str[20]; //define variable str to keep string has length 20
     if (start==NULL){ //if start pointer is null print some sentence
-        printf("Directory id Empty....");
+        printf("Directory id Empty....\n");
         getch();
         return ;
     }
@@ -122,31 +113,30 @@ void edit(){
 
 //------>delete contact function<------//
 void del(){
-    node *ptr, *prev, *temp;
-    char str[20], yn = 'n';
-    if (start == NULL){
-        printf("Directory is Empty. \n");
+    node *ptr, *prev, *temp; //define pointer ptr prev and temp
+    char str[20], yn = 'n'; //create str variable to keep 20 charector and yn to keep accept answer
+    if (start == NULL){ //if start pointer is equal null
+        printf("Directory is Empty. \n"); //print "Directory is empty."
         getch();
-        return;
+        return; //return to main function
     }
-    printf("First Name to Delete : ");
-    scanf("%s", str);
-    prev = ptr = start;
-    while (strcmp(ptr -> fname, str) != 0){
-        prev = ptr;
-        ptr = ptr -> next;
-        if (ptr == NULL) break;
+    printf("First Name to Delete : "); //show some sentence 
+    scanf("%s", str); //keep fname into str
+    prev = ptr = start; //set pointer prev ptr same start
+    while (strcmp(ptr -> fname, str) != 0){ //compare string to all node 
+        prev = ptr; //set prev equal to ptr
+        ptr = ptr -> next; //set ptr is next
+        if (ptr == NULL) break; //if ptr equal null will exit loop
     }
-    if (ptr != NULL){
-        printf("Are you sure to delete this record ? [y/n] : ");
-        yn = getch();
+    if (ptr != NULL){ //if ptr is not null 
         printf("\n\n---------------------------------------------------------\n");
         printf("First Name : %s\n",ptr -> fname);
         printf("Last Name : %s\n",ptr -> lname);
         printf("Phone Number : %s\n",ptr -> telnum);
         printf("---------------------------------------------------------\n\n");
-
-        if(yn == 'y'){
+		printf("Are you sure to delete this record ? [y/n] : "); //ask to delete
+        yn = getch(); //get yn value
+        if(yn == 'y'){ //if answer y will delete node
             if (ptr == start) {
                 temp = start -> next;
                 free(start);
@@ -156,72 +146,75 @@ void del(){
                 free (start);
                 prev -> next = temp;
             }
-            printf("Record Deleted.\n");
+            printf("Record Deleted.\n"); //print record is delete
         }else{
-            printf("Record not deleted.\n");
+            printf("Record not deleted.\n"); //else is not delete will answer n
         }
     } else {
-        printf("Not Matching Record Found.\n");
+        printf("Not Matching Record Found.\n"); //or not match string
     }
-    return;
+    return; //return to main function
     getch();
 }
 
 //------>display all record<------//
-void disall(){
-    node *ptr;
-    if(start == NULL){
-        printf("Directory is Empty.");
+void disall(){ 
+    node *ptr; //define ptr i pointer
+    if(start == NULL){ //if start equal null will show "Directory is Empty"
+        printf("Directory is Empty.\n");
         return;
     }
-    for(ptr = start; ptr != NULL; ptr = ptr -> next){
+    for(ptr = start; ptr != NULL; ptr = ptr -> next){ //loop to read data from all node 
 		printf("------------------------------\n");
-        printf("First name: %s \n", ptr -> fname);
-        printf("Last name:%s \n", ptr -> lname);
-        printf("Telephone No.: %s \n", ptr -> telnum);
+        printf("First name: %s \n", ptr -> fname); //show fname o this node
+        printf("Last name:%s \n", ptr -> lname); //show lname from this node
+        printf("Telephone No.: %s \n", ptr -> telnum); //show telnum from this node
         printf("------------------------------\n");
     }
-    return;
+    return; //return to main function
     getch();
 }
 
 //------>main menu function<------//
 int menu(){
-    int select_menu;
-
-    printf(" 1. Add contact to your phonebook.\n");
+    int select_menu; //build select_menu to keep integer
+	//display show menu
+    printf("\n 1. Add contact to your phonebook.\n");
     printf(" 2. Find contact in your phonebook.\n");
     printf(" 3. Delete contact from your phonebook.\n");
     printf(" 4. Edit contact information.\n");
     printf(" 5. Display all your contact.\n");
     printf(" 6. EXIT\n");
     printf("Enter your choice (1-6) : ");
-    scanf("%d", &select_menu);
-    return select_menu;
+    scanf("%d", &select_menu); //keep integer to select_menu variable
+    return select_menu; //return value
 }
 
 int main() {
-    int ch;
+    int ch; //define variable to keep value from menu function
     start = (node *)malloc(sizeof(node));
     start = NULL;
+	//do while loop to run program
     do{
-        ch=menu();
+        ch=menu(); //get value from menu function
+		//switch-case function
         switch (ch) {
-            case 1:
+            case 1: //when value is 1 do add() function
                 add();
+                break; //exit to menu
+            case 2: //when value is 2 do find() function
+                find(); 
                 break;
-            case 2:
-                find();
-                break;
-            case 3:
+            case 3: //when value is 3 do del() function
                 del();
                 break;
-            case 4:
+            case 4: //when value is 4 do edit() function
                 edit();
                 break;
-            case 5:
+            case 5: //when value is 5 do diall() function
                 disall();
                 break;
+				//if value is equal 6 will end program
         }
-    }while (ch != 6);
+    }while (ch != 6); //loop to how menu if value is not equal to 6
 }
