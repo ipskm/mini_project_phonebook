@@ -24,7 +24,7 @@ node *start, *temp; //init start-pointer and temp-pointer -> สร้างพ�
 //------>insert data in to node<------//
 void add(){
     node *ptr, *prev;  //define pointer ptr and prev -> สร้างพอยต์เตอร์ ptr และ prev
-    temp = (node *)malloc(sizeof(node)); //set temp insert data to node -> ให้ temp เป็นตัวแปรเก็บข้อมูล
+    temp = (node *)malloc(sizeof(node)); //reserve space in RAM for temp -> จองพื้นที่ในแรมสำหรับ temp
     printf("First name : ");
     scanf("%s", temp -> fname);  //insert First-Name to fmane[20] by temp pointer -> รับค่าและเก็บข้อมูลเข้าโหนด
     printf("Last Name : ");
@@ -192,7 +192,7 @@ int menu(){
 
 int main() {
     int ch; //define variable to keep value from menu function -> สร้างตัวแปรเพื่อรับค่าจากฟังก์ชันเมนูหลัก
-    start = (node *)malloc(sizeof(node));
+    start = (node *)malloc(sizeof(node)); //reserve space in RAM for start -> จองพื้นที่ในแรมสำหรับ start
     start = NULL;
 	//do while loop to run program -> วงวนหลักของการทำงานในโปรแกรมโดยการแสดงผลวนไปเรื่อย ๆ จนกว่าค่าที่ได้รับเป็น 6
     do{
